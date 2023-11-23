@@ -1,2 +1,2 @@
-# w4schools-react-spring-postgre
+# w4schools-react-rubyonrails-postgre
  
