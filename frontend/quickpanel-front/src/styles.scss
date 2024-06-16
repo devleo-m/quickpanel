@@ -7,4 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center !important;
+    height: 90px;
+    background-color: #212121;
 }
