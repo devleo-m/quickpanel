@@ -2,13 +2,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 2%;
+    background-color: #e0dbe8; // Feel free to change the color
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
   
     .login-info {
-      width: 50%;
+      width: 100%;
+      max-width: 350px;
+      height: auto;
   
       h1 {
-        color: #0056b3;
+        color: #a213a2;
         margin-bottom: 10px;
       }
   
@@ -32,7 +38,7 @@
           padding: 10px 20px;
           border: none;
           border-radius: 5px;
-          background-color: #007bff;
+          background-color: #a213a2;
           color: white;
           cursor: pointer;
   
@@ -46,7 +52,7 @@
         color: #666;
   
         a {
-          color: #007bff;
+          color: #a213a2;
           text-decoration: none;
   
           &:hover {
@@ -57,9 +63,16 @@
     }
   
     .login-image {
-      width: 50%;
-      // Adicione estilos para sua imagem aqui
+        display: flex; /* Adiciona flexbox ao container da imagem */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        width: 100%;        
+        img {
+            width: 50%; /* Ajuste a largura da imagem conforme necessário */
+            max-width: 100%; /* Garante que a imagem não exceda o container */
+        }
     }
+    
   }
   
   @media (max-width: 768px) {
@@ -68,6 +81,7 @@
   
       .login-info,
       .login-image {
+        margin-top: 50px;
         width: 100%;
       }
     }
