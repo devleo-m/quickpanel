@@ -1,0 +1,94 @@
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0dbe8; // Feel free to change the color
+  width: 100vw;
+  height: 78vh;
+  margin: 0;
+  padding: 0;
+
+  .container-banner {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    align-items: center;
+    padding: 20px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .banner-msg {
+      text-align: center;
+      text-align: left !important;
+      width: 50%;
+
+      p {
+        color: #626262; // Paragraph color
+      }
+
+      h1 {
+        color: #000000; // Heading color
+        margin: 10px 0;
+      }
+
+      strong {
+        font-weight: bold;
+        color: #a213a2; // Color for Full-Stack
+      }
+
+      .banner-button {
+        margin-top: 20px;
+
+        button {
+          padding: 10px 20px;
+          margin-right: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &.btn-contact {
+            background-color: #a213a2; // Contact button color
+            color: white;
+
+            i {
+              margin-right: 5px;
+            }
+          }
+
+          &.button-cv {
+            background-color: #a213a2; // CV/Github button color
+            color: white;
+
+            i {
+              margin-right: 5px;
+              color: #a213a2;
+            }
+          }
+        }
+      }
+    }
+
+    .banner-img {
+      margin-top: 20px;
+
+      img {
+        width: 100%;
+        max-width: 300px; // Adjust as needed
+        border-radius: 10px; // Border radius for image
+      }
+
+      @media (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
+  }
+}

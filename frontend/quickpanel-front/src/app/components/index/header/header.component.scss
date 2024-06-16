@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+
+    h1{
+        font-size: 2rem;
+    }
+
+    ul{
+        display: flex;
+        margin: 10px;
+        text-decoration: none;
+        li{
+            font-size: 1rem;
+            margin: 0 10px;
+            text-decoration: none;
+            list-style-type: none 
+        }
+    }
+
+    button{
+        padding: 10px;
+        cursor: pointer;
+        background-color: #a213a2;
+        color: rgba(240, 248, 255, 0.907);
+        border-radius: 20px;
+        border: 0;
+    }
+
+    button:hover{
+        background-color: #791079;
+        color: aliceblue;
+    }
+}
