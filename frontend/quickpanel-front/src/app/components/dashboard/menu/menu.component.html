@@ -1,1 +1,49 @@
-<p>menu works!</p>
+<header>
+  <div class="container">
+    <nav
+      [ngClass]="{ 'menu-expanded': isExpanded }"
+      (mouseenter)="toggleMenu()"
+      (mouseleave)="toggleMenu()"
+    >
+      <div class="logo">
+        <h1>Quickpanel</h1>
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#home"
+              ><i class="fa-solid fa-house-chimney-user"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="#personalizar"
+              ><i class="fa-solid fa-brush"></i> Personalizar</a
+            >
+          </li>
+
+          <!-- <li>
+            <a href="#home"
+              ><i class="fa-solid fa-house-chimney-user"></i>
+              <span>Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#personalizar"
+              ><i class="fa-solid fa-brush"></i> <span>Personalizar</span></a
+            >
+          </li>
+           -->
+        </ul>
+      </div>
+      <div class="sair">
+        <ul>
+          <li class="logout">
+            <a href="#sair"
+              ><i class="fa-solid fa-right-to-bracket"></i> Sair</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
