@@ -1,0 +1,72 @@
+header {
+  height: 100vh; // Altura total da tela
+  width: 190px; // Largura do menu
+  position: fixed; // Fixo na tela
+  left: 0; // Alinhado à esquerda
+  top: 0; // No topo da tela
+
+  .container {
+    display: flex;
+    flex-direction: column; // Elementos em coluna
+    justify-content: space-between; // Espaço entre os elementos
+    height: 100%; // Altura total do container
+
+    nav {
+      background-color: #e0dbe8; // Cor de fundo inicial
+      display: flex;
+      flex-direction: column; // Elementos em coluna
+      justify-content: space-between; // Espaço entre os elementos
+      height: 100%; // Altura total do nav
+      width: 100%;
+
+      .logo {
+        text-align: center; // Centraliza o texto da logo
+
+        h1 {
+          color: #a213a2;
+          font-size: 1.5rem;
+          margin-top: 1rem; // Espaço no topo
+        }
+      }
+
+      .sair {
+        border-top: 0.1rem solid #aaa6b1; // Degradê no hover;
+      }
+
+      .menu,
+      .sair {
+        ul {
+          list-style-type: none;
+
+          li {
+            a {
+              display: block; // Faz o link preencher o li
+              text-align: left;
+              padding: 1rem;
+              box-sizing: border-box; // Garante que padding não adicione largura
+              color: rgb(53, 53, 53);
+              text-decoration: none;
+              
+              i{
+                padding: 5px;
+                border-radius: 10px;
+                font-size: 20px;
+                text-align: center;
+              }
+
+              &:hover {
+                background-image: linear-gradient(
+                  to right,
+                  #e0dbe8,
+                  #a213a2
+                ); // Degradê no hover
+                color: white; // Cor do texto no hover
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
