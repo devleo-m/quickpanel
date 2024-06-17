@@ -1,0 +1,125 @@
+// Variáveis de cores
+$primary-color: #a213a2;
+$background-color: #ecf0f1;
+$text-color: #2c3e50;
+
+// Mixins para responsividade
+@mixin respond-to($media) {
+  @if $media == 'phone' {
+    @media only screen and (max-width: 600px) { @content; }
+  }
+  @if $media == 'tablet' {
+    @media only screen and (max-width: 900px) { @content; }
+  }
+  @if $media == 'desktop' {
+    @media only screen and (min-width: 901px) { @content; }
+  }
+}
+
+// Estilos globais
+body {
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+// Estilos do cabeçalho e menu
+header {
+  background-color: $primary-color;
+  color: white;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    .logo h1 {
+      margin: 0;
+    }
+
+    .menu,
+    .sair {
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        li a {
+          color: white;
+          text-decoration: none;
+          display: block;
+          padding: 10px;
+
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+        }
+      }
+    }
+
+    &.menu-expanded {
+      .menu,
+      .sair {
+        display: block;
+      }
+    }
+  }
+}
+
+// Estilos do dashboard
+main {
+
+    margin-left: 190px; /* Ajuste para a largura do seu menu */
+
+  .welcome-dashboard,
+  .visitor-statistics,
+  .content-performance {
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    h1, h2 {
+      color: $primary-color;
+    }
+  }
+}
+
+// Responsividade
+@include respond-to('phone') {
+    header nav {
+        flex-direction: column;
+
+        &.menu-expanded {
+            width: auto;
+
+            .menu,
+            .sair {
+                display: none; // Esconde o menu em dispositivos móveis
+            }
+        }
+    }
+
+    main {
+        padding-left: 0; // Remove o espaço do menu em dispositivos móveis
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
