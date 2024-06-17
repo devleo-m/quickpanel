@@ -1,0 +1,62 @@
+$primary-color: rgb(231, 223, 234);
+$secondary-color: rgb(235, 225, 236);
+$font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+main {
+    margin-left: 190px; /* Ajuste para a largura do seu menu */
+    padding: 0 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, $primary-color, $secondary-color);
+  font-family: $font-stack;
+
+  .upload-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .upload-instructions {
+      margin-bottom: 20px;
+
+      h2 {
+        color: #a213a2;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: darken(rgb(24, 23, 24), 20%);
+        margin-bottom: 10px;
+      }
+
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      
+    }
+
+    .upload-button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #a213a2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken(#a213a2, 10%);
+      }
+    }
+  }
+}
+
