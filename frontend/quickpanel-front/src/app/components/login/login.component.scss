@@ -2,16 +2,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2%;
-    background-color: #e0dbe8; // Feel free to change the color
     width: 100vw;
     height: 100vh;
     margin: 0;
   
     .login-info {
-      width: 100%;
-      max-width: 350px;
-      height: auto;
+        width: 100%;
+        max-width: 350px;
+        background-color: #e0dbe8; // Feel free to change the color
+        /* Mantenha a altura total */
+        height: 100vh;
+        /* Remova margin auto e use flexbox para centralizar */
+        display: flex;
+        flex-direction: column; /* Mantém a estrutura de coluna interna */
+        justify-content: center; /* Centraliza verticalmente o conteúdo interno */
+        align-items: center; /* Centraliza horizontalmente o conteúdo interno */
+        padding: 0 2%;
   
       h1 {
         color: #a213a2;
@@ -26,12 +32,23 @@
       .login-form {
         display: flex;
         flex-direction: column;
+        width: 100%;
   
         input {
           padding: 10px;
+          width: 100%;
           margin-bottom: 10px;
           border: 1px solid #ccc;
           border-radius: 5px;
+        }
+
+        .terms{
+            display: flex;
+        }
+
+        .terms .check{
+            width: 22px;
+
         }
   
         button {
@@ -54,6 +71,7 @@
         a {
           color: #a213a2;
           text-decoration: none;
+          cursor: pointer;
   
           &:hover {
             text-decoration: underline;
@@ -81,6 +99,8 @@
   
       .login-info,
       .login-image {
+        background-color: white;
+
         margin-top: 50px;
         width: 100%;
       }

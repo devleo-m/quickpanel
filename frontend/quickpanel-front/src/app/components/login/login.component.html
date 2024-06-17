@@ -1,5 +1,5 @@
 <div class="login-container">
-  <div class="login-info">
+  <div class="login-info" *ngIf="showLogin">
     <h1>Quickpanel</h1>
     <p>Conecte-se para continuar</p>
     <form class="login-form">
@@ -8,9 +8,35 @@
       <button type="submit">Entrar</button>
     </form>
     <p class="register-message">
-      Não tem uma conta? <a href="#">Registre-se agora</a>
+      Não tem uma conta? <a (click)="toggleForm()">Registre-se agora</a>
     </p>
   </div>
+
+  <div class="login-info" *ngIf="!showLogin">
+    <h1>Quickpanel</h1>
+    <p>Registri-se para continuar</p>
+    <form class="login-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite seu email ou login" required />
+    
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Crie uma senha" required />
+    
+        <label for="confirm-password">Confirmar Senha</label>
+        <input type="password" id="confirm-password" placeholder="Confirme sua senha" required />
+
+        <div class="terms">
+            <input type="checkbox" id="terms" class="check" required />
+            <label for="terms">Eu aceito os <a href="#" target="_blank">Termos de Serviço e Política</a>.</label>
+        </div>
+    
+        <button type="submit">Registrar</button>
+    </form>
+    <p class="register-message">
+      Voce ja tem uma conta? <a (click)="toggleForm()">Conectar agora</a>
+    </p>
+  </div>
+
   <div class="login-image">
     <img src="assets/login.svg" alt="">
   </div>
