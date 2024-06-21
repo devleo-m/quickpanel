@@ -1,0 +1,2 @@
+class Logo < ApplicationRecord
+end
