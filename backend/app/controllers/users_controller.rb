@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = Role.find_by(name: 'leitor') # Usuário padrão é leitor
 
     if @user.save
       session[:user_id] = @user.id
@@ -34,5 +35,20 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :address, :phone)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:alert] = 'Você deve estar logado para acessar esta seção'
+      redirect_to login_path
+    end
+  end
+
+  def logged_in?
+    !!current_user
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 end

@@ -1,14 +1,12 @@
 class SessionsController < ApplicationController
   def new
-    # Ação para exibir o formulário de login
   end
 
   def create
     user = User.find_by(email: params[:email])
-
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to dashboard_path # Redireciona para o dashboard após o login
+      redirect_to dashboard_path
     else
       flash.now[:alert] = 'Email ou senha inválidos'
       render :new
