@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:new, :create]
-
-  def new
-    @user = User.new
-  end
+  before_action :require_login, only: [:update, :me]
 
   def create
     @user = User.new(user_params)
@@ -11,24 +7,24 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to edit_user_path(@user), notice: 'Usuário criado com sucesso'
+      render json: { message: 'Usuário criado com sucesso', user: @user }, status: :created
     else
-      render :new
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @user = current_user
   end
 
   def update
     @user = current_user
 
     if @user.update(user_params)
-      redirect_to edit_user_path(@user), notice: 'Dados atualizados com sucesso'
+      render json: { message: 'Dados atualizados com sucesso', user: @user }, status: :ok
     else
-      render :edit
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def me
+    render json: current_user, status: :ok
   end
 
   private
@@ -38,10 +34,9 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    unless logged_in?
-      flash[:alert] = 'Você deve estar logado para acessar esta seção'
-      redirect_to login_path
-    end
+      render json: {
+        error: 'Você deve estar logado para acessar esta seção' },
+             status: :unauthorized unless logged_in?
   end
 
   def logged_in?
