@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
         role: user.role.name,
         token: token
       }, status: :ok
-
     else
       render json: { error: 'Email ou senha inválidos' }, status: :unauthorized
     end
