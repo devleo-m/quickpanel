@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :require_login, only: [:update, :me]
+  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :authorize_request, only: [:create]
 
   def create
+    logger.debug "Iniciando criação de usuário"
     @user = User.new(user_params)
-    @user.role = Role.find_by(name: 'leitor') # Definindo o papel como leitor por padrão
+    logger.debug "Parametros do usuário: #{@user.inspect}"
+
+    @user.role = Role.find_by(name: 'leitor') # Usuário padrão é leitor
+    logger.debug "Definindo papel do usuário: #{@user.role.inspect}"
 
     if @user.save
-      session[:user_id] = @user.id
-      render json: { message: 'Usuário criado com sucesso', user: @user }, status: :created
+      logger.debug "Usuário salvo com sucesso"
+      payload = { user_id: @user.id, exp: 24.hours.from_now.to_i }
+      token = JWT.encode(payload, Rails.application.secret_key_base, 'HS256')
+      render json: { message: 'Usuário criado com sucesso', email: @user.email, role: @user.role.name, token: token }, status: :created
     else
-      Rails.logger.error("Erro ao criar usuário: #{@user.errors}")
+      logger.debug "Falha ao salvar usuário: #{@user.errors.full_messages}"
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
@@ -21,7 +27,6 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render json: { message: 'Dados atualizados com sucesso', user: @user }, status: :ok
     else
-      Rails.logger.error("Erro ao atualizar usuário: #{@user.errors}")
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
@@ -34,19 +39,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
-  end
-
-  def require_login
-    unless logged_in?
-      render json: { error: 'Você deve estar logado para acessar esta seção' }, status: :unauthorized
-    end
-  end
-
-  def logged_in?
-    !!current_user
-  end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 end
