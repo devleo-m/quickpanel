@@ -13,6 +13,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :update]
   get '/users/me', to: 'users#me'
-
   get '/dashboard', to: 'dashboard#index'
 end
