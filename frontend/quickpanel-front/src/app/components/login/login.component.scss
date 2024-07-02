@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background-color: rgb(237, 233, 240);
   
     .login-info {
         width: 100%;
@@ -93,15 +94,24 @@
     
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     .login-container {
       flex-direction: column;
   
       .login-info,
       .login-image {
-        background-color: white;
+        
+        margin: 50px;
+        width: 100%;
+      }
 
-        margin-top: 50px;
+      .login-info{
+        padding: 30px;
+        width: 360px;
+        max-width: 100%;
+      }
+
+      .login-image {
         width: 100%;
       }
     }
