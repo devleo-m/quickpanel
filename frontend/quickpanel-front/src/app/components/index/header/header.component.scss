@@ -7,7 +7,8 @@ header{
     margin: auto;
 
     h1{
-        font-size: 2rem;
+        font-size: 1.5rem;
+        color: #c31bc3;
     }
 
     ul{
@@ -18,7 +19,16 @@ header{
             font-size: 1rem;
             margin: 0 10px;
             text-decoration: none;
-            list-style-type: none 
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: rgba(240, 248, 255, 0.907);
+        }
+
+        a:hover{
+            color: #a213a2;
+            transition: 0.3s;
         }
     }
 
