@@ -2,93 +2,106 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e0dbe8; // Feel free to change the color
-  width: 100vw;
-  height: 78vh;
+  background-color: #e0dbe8; // Altere a cor conforme necessário
   margin: 0;
   padding: 0;
+}
 
-  .container-banner {
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between !important;
-    align-items: center;
-    padding: 20px;
+.container-banner {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  min-height: 80vh; /* Mantenha a altura mínima para telas maiores */
 
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .banner-img {
+    order: 1; /* Imagem vem primeiro */
     @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: space-between;
+      order: 0; /* Reinicie a ordem para telas maiores */
+    }
+  }
+
+  .banner-msg {
+    order: 2; /* Texto vem em segundo */
+    text-align: center;
+    margin: 50px;
+    @media (min-width: 768px) {
+      order: 0; /* Reinicie a ordem para telas maiores */
+      text-align: left !important;
+    }
+    p {
+      color: #626262; // Cor do parágrafo
     }
 
-    .banner-msg {
-      text-align: center;
-      text-align: left !important;
-      width: 50%;
+    h1 {
+      color: #000000d7; // Cor do título
+      margin: 10px 0;
+    }
 
-      p {
-        color: #626262; // Paragraph color
-      }
+    strong {
+      font-weight: bold;
+      color: #a213a2; // Cor para Full-Stack
+    }
 
-      h1 {
-        color: #000000; // Heading color
-        margin: 10px 0;
-      }
+    .banner-button {
+      margin-top: 20px;
 
-      strong {
-        font-weight: bold;
-        color: #a213a2; // Color for Full-Stack
-      }
+      button {
+        max-width: 100%;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
 
-      .banner-button {
-        margin-top: 20px;
+        &:hover {
+          opacity: 0.8;
+        }
 
-        button {
-          padding: 10px 20px;
-          margin-right: 10px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
+        &.btn-contact {
+          background-color: #a213a2; // Cor do botão de contato
+          color: white;
 
-          &:hover {
-            opacity: 0.8;
+          i {
+            margin-right: 5px;
           }
+        }
 
-          &.btn-contact {
-            background-color: #a213a2; // Contact button color
-            color: white;
+        &.button-cv {
+          background-color: #a213a2; // Cor do botão CV/Github
+          color: white;
 
-            i {
-              margin-right: 5px;
-            }
-          }
-
-          &.button-cv {
-            background-color: #a213a2; // CV/Github button color
-            color: white;
-
-            i {
-              margin-right: 5px;
-              color: #a213a2;
-            }
+          i {
+            margin-right: 5px;
           }
         }
       }
     }
+  }
 
-    .banner-img {
-      margin-top: 20px;
+  .banner-img {
+    margin-top: 20px;
+    img {
+      width: 100%;
+      max-width: 300px; // Ajuste conforme necessário
+      border-radius: 10px; // Raio do border para imagem
+    }
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
 
-      img {
-        width: 100%;
-        max-width: 300px; // Adjust as needed
-        border-radius: 10px; // Border radius for image
-      }
-
-      @media (min-width: 768px) {
-        margin-top: 0;
-      }
+  @media (max-width: 768px) {
+    .container-banner {
+      min-height: auto; /* Altura automática para telas menores */
     }
   }
 }
